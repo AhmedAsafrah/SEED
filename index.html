@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>بيئة دعم افتراضية للأطفال المصابين بالتوحد</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,78 +23,107 @@
         font-family: "Noto Sans Arabic", sans-serif;
         overflow: hidden;
         background: black;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
       }
       select,
       input,
       button {
-        font-size: 1.25rem;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
         font-family: "Noto Sans Arabic", sans-serif;
       }
-      .level-btn {
+
+      /* Responsive Interface Containers */
+      .interface-container {
+        max-width: 90vw;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: clamp(1rem, 4vw, 2rem);
+        border-radius: clamp(0.5rem, 2vw, 1rem);
+      }
+
+      /* Enhanced Button Styles */
+      .level-btn, .room-btn {
         transition: transform 0.3s ease, background-color 0.3s ease;
         border: 2px solid white;
-        padding: 1.5rem;
+        padding: clamp(1rem, 3vw, 1.5rem);
         position: relative;
         overflow: hidden;
         cursor: pointer;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
+      
+      .level-btn:hover, .room-btn:hover {
+        transform: scale(1.05);
+      }
+      
       .level-btn:hover {
-        transform: scale(1.15);
         background-color: #34d399;
       }
+      
+      .room-btn:hover {
+        background-color: #60a5fa;
+      }
+
       .level-btn::after {
         content: "✨";
         position: absolute;
         top: 10px;
         right: 10px;
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 3vw, 1.5rem);
         opacity: 0;
         transition: opacity 0.3s ease;
       }
       .level-btn:hover::after {
         opacity: 1;
       }
-      .room-btn {
-        transition: transform 0.3s ease, background-color 0.3s ease;
-        border: 2px solid white;
-        padding: 1.5rem;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-      }
-      .room-btn:hover {
-        transform: scale(1.15);
-        background-color: #60a5fa;
-      }
+      
       .room-btn::after {
         content: "🌟";
         position: absolute;
         top: 10px;
         right: 10px;
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 3vw, 1.5rem);
         opacity: 0;
         transition: opacity 0.3s ease;
       }
       .room-btn:hover::after {
         opacity: 1;
       }
+
+      /* Exit Button Responsive */
       #exit-room-btn {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
+        position: fixed;
+        bottom: clamp(15px, 3vh, 25px);
+        left: clamp(15px, 3vw, 25px);
         z-index: 10;
         display: none;
         cursor: pointer;
+        padding: clamp(0.5rem, 2vw, 1rem);
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        min-width: 80px;
+        min-height: 45px;
       }
+
       .hidden {
         display: none !important;
       }
+
+      /* Enhanced Range Sliders */
       input[type="range"] {
         width: 100%;
         margin: 10px 0;
         -webkit-appearance: none;
         appearance: none;
-        height: 8px;
+        height: clamp(6px, 1.5vw, 10px);
         border-radius: 5px;
         background: #ddd;
         outline: none;
@@ -104,8 +133,8 @@
       input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        height: 25px;
-        width: 25px;
+        height: clamp(20px, 4vw, 30px);
+        width: clamp(20px, 4vw, 30px);
         border-radius: 50%;
         background: #04aa6d;
         cursor: pointer;
@@ -119,8 +148,8 @@
       }
 
       input[type="range"]::-moz-range-thumb {
-        height: 25px;
-        width: 25px;
+        height: clamp(20px, 4vw, 30px);
+        width: clamp(20px, 4vw, 30px);
         border-radius: 50%;
         background: #04aa6d;
         cursor: pointer;
@@ -134,68 +163,316 @@
         box-shadow: 0 0 15px rgba(4, 170, 109, 0.8);
       }
 
+      /* Responsive Indicators */
       .volume-indicator {
-        position: absolute;
-        top: 10px;
-        right: 10px;
+        position: fixed;
+        top: clamp(10px, 2vh, 15px);
+        right: clamp(10px, 2vw, 15px);
         background: rgba(0, 0, 0, 0.7);
         color: white;
-        padding: 10px;
+        padding: clamp(8px, 2vw, 12px);
         border-radius: 5px;
-        font-size: 14px;
+        font-size: clamp(0.8rem, 2vw, 1rem);
         z-index: 100;
         display: none;
         transition: all 0.3s ease;
+        max-width: 200px;
       }
 
       .brightness-indicator {
-        position: absolute;
-        top: 60px;
-        right: 10px;
+        position: fixed;
+        top: clamp(50px, 8vh, 70px);
+        right: clamp(10px, 2vw, 15px);
         background: rgba(255, 215, 0, 0.8);
         color: black;
-        padding: 10px;
+        padding: clamp(8px, 2vw, 12px);
         border-radius: 5px;
-        font-size: 14px;
+        font-size: clamp(0.8rem, 2vw, 1rem);
         z-index: 100;
         display: none;
         transition: all 0.3s ease;
+        max-width: 200px;
       }
 
+      /* Student & Level Info */
       .student-info {
-        position: absolute;
-        top: 10px;
-        left: 10px;
+        position: fixed;
+        top: clamp(10px, 2vh, 15px);
+        left: clamp(10px, 2vw, 15px);
         background: rgba(34, 197, 94, 0.9);
         color: white;
-        padding: 10px 15px;
+        padding: clamp(8px, 2vw, 12px);
         border-radius: 8px;
-        font-size: 16px;
+        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
         font-weight: bold;
         z-index: 100;
         display: none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        max-width: 250px;
+        word-wrap: break-word;
       }
 
       .level-info {
-        position: absolute;
-        top: 60px;
-        left: 10px;
+        position: fixed;
+        top: clamp(50px, 8vh, 70px);
+        left: clamp(10px, 2vw, 15px);
         background: rgba(59, 130, 246, 0.9);
         color: white;
-        padding: 8px 12px;
+        padding: clamp(6px, 1.5vw, 10px);
         border-radius: 6px;
-        font-size: 14px;
+        font-size: clamp(0.8rem, 2vw, 1rem);
         z-index: 100;
         display: none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        max-width: 220px;
+        word-wrap: break-word;
       }
 
       .error-message {
         color: #ff6b6b;
-        font-size: 14px;
+        font-size: clamp(0.8rem, 2vw, 1rem);
         margin-top: 5px;
         display: none;
+      }
+
+      /* Mobile-First Responsive Design */
+      @media screen and (max-width: 480px) {
+        /* Mobile Phones */
+        .interface-container {
+          padding: 1rem;
+          max-width: 95vw;
+          max-height: 90vh;
+        }
+        
+        .level-btn, .room-btn {
+          padding: 1.2rem 0.8rem;
+          margin: 0.5rem 0;
+          font-size: 1.1rem;
+          min-height: 65px;
+        }
+        
+        #exit-room-btn {
+          bottom: 10px;
+          left: 10px;
+          padding: 0.8rem;
+          font-size: 1rem;
+          min-width: 90px;
+        }
+        
+        input[type="text"] {
+          padding: 1rem;
+          font-size: 1.1rem;
+        }
+        
+        h1 {
+          font-size: 1.8rem !important;
+          margin-bottom: 1rem;
+        }
+        
+        button {
+          padding: 1rem;
+          font-size: 1.1rem;
+          min-height: 50px;
+        }
+        
+        .volume-indicator, .brightness-indicator {
+          font-size: 0.9rem;
+          padding: 10px;
+          top: 10px;
+          right: 10px;
+        }
+        
+        .brightness-indicator {
+          top: 55px;
+        }
+        
+        .student-info {
+          font-size: 1rem;
+          padding: 10px;
+          max-width: 180px;
+        }
+        
+        .level-info {
+          font-size: 0.9rem;
+          padding: 8px;
+          max-width: 160px;
+          top: 55px;
+        }
+      }
+
+      @media screen and (min-width: 481px) and (max-width: 768px) {
+        /* Tablets */
+        .interface-container {
+          padding: 1.5rem;
+          max-width: 90vw;
+        }
+        
+        .level-btn, .room-btn {
+          padding: 1.4rem;
+          font-size: 1.2rem;
+          min-height: 70px;
+        }
+        
+        h1 {
+          font-size: 2.2rem !important;
+        }
+        
+        input[type="text"] {
+          padding: 1.2rem;
+          font-size: 1.2rem;
+        }
+        
+        button {
+          padding: 1.2rem;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1024px) {
+        /* Large Tablets / Small Laptops */
+        .interface-container {
+          padding: 2rem;
+          max-width: 85vw;
+        }
+        
+        .level-btn, .room-btn {
+          padding: 1.5rem;
+          font-size: 1.3rem;
+          min-height: 75px;
+        }
+        
+        h1 {
+          font-size: 2.5rem !important;
+        }
+      }
+
+      @media screen and (min-width: 1025px) {
+        /* Desktop */
+        .interface-container {
+          padding: 2.5rem;
+          max-width: 80vw;
+        }
+        
+        .level-btn, .room-btn {
+          padding: 1.5rem;
+          font-size: 1.25rem;
+          min-height: 80px;
+        }
+        
+        h1 {
+          font-size: 3rem !important;
+        }
+      }
+
+      /* Touch-friendly interactions */
+      @media (pointer: coarse) {
+        button, .level-btn, .room-btn {
+          min-height: 48px;
+          min-width: 48px;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+          height: 32px;
+          width: 32px;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+          height: 32px;
+          width: 32px;
+        }
+      }
+
+      /* Landscape mobile optimization */
+      @media screen and (max-height: 480px) and (orientation: landscape) {
+        .interface-container {
+          max-height: 95vh;
+          overflow-y: auto;
+          padding: 1rem;
+        }
+        
+        h1 {
+          font-size: 1.5rem !important;
+          margin-bottom: 0.5rem;
+        }
+        
+        .level-btn, .room-btn {
+          padding: 0.8rem;
+          margin: 0.3rem 0;
+          min-height: 50px;
+        }
+        
+        #exit-room-btn {
+          bottom: 5px;
+          left: 5px;
+          padding: 0.6rem;
+        }
+      }
+
+      /* High DPI Display Support */
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        input[type="range"]::-webkit-slider-thumb {
+          border: 1px solid rgba(4, 170, 109, 0.3);
+        }
+        
+        button, .level-btn, .room-btn {
+          border-width: 1px;
+        }
+      }
+
+      /* Accessibility improvements */
+      @media (prefers-reduced-motion: reduce) {
+        .level-btn, .room-btn {
+          transition: none;
+        }
+        
+        .level-btn:hover, .room-btn:hover {
+          transform: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover,
+        input[type="range"]::-moz-range-thumb:hover {
+          transform: none;
+        }
+      }
+
+      /* Focus styles for keyboard navigation */
+      button:focus, .level-btn:focus, .room-btn:focus {
+        outline: 3px solid #4f46e5;
+        outline-offset: 2px;
+      }
+
+      input:focus {
+        outline: 2px solid #4f46e5;
+        outline-offset: 1px;
+      }
+
+      /* Performance optimization for mobile */
+      @media screen and (max-width: 768px) {
+        * {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+      }
+
+      /* Specific improvements for Arabic RTL text */
+      input[type="text"] {
+        text-align: right;
+        direction: rtl;
+        padding: clamp(0.8rem, 2vw, 1.2rem);
+      }
+
+      label {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Loading states */
+      .loading {
+        opacity: 0.6;
+        pointer-events: none;
       }
     </style>
   </head>
@@ -224,9 +501,9 @@
     >
       <div
         id="settings-interface"
-        class="bg-gray-800 bg-opacity-70 text-white p-8 rounded-lg mb-4 pointer-events-auto"
+        class="interface-container bg-gray-800 bg-opacity-70 text-white rounded-lg mb-4 pointer-events-auto"
       >
-        <h1 class="text-3xl font-bold mb-4">الإعدادات</h1>
+        <h1 class="text-3xl font-bold mb-4 text-center">الإعدادات</h1>
         <div class="flex flex-col space-y-6">
           <div>
             <label for="child-name" class="block text-lg mb-2"
@@ -236,7 +513,7 @@
               type="text"
               id="child-name"
               placeholder="أدخل اسم الطفل"
-              class="bg-gray-700 text-white p-3 rounded w-full text-right"
+              class="bg-gray-700 text-white rounded w-full text-right"
               required
             />
             <div id="name-error" class="error-message">
@@ -274,7 +551,7 @@
           </div>
           <button
             id="to-level-btn"
-            class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded"
+            class="bg-blue-500 hover:bg-blue-600 text-white rounded w-full"
           >
             التالي
           </button>
@@ -283,31 +560,31 @@
 
       <div
         id="level-interface"
-        class="bg-gray-800 bg-opacity-70 text-white p-10 rounded-xl mb-4 pointer-events-auto hidden max-w-lg w-full"
+        class="interface-container bg-gray-800 bg-opacity-70 text-white rounded-xl mb-4 pointer-events-auto hidden"
       >
         <h1 class="text-4xl font-bold mb-6 text-center">اختيار المستوى</h1>
         <div class="flex flex-col space-y-6">
           <button
             id="level-1"
-            class="level-btn bg-green-500 text-white p-6 rounded-lg text-xl font-semibold shadow-lg"
+            class="level-btn bg-green-500 text-white rounded-lg text-xl font-semibold shadow-lg"
           >
             طالب ومعلم
           </button>
           <button
             id="level-2"
-            class="level-btn bg-green-500 text-white p-6 rounded-lg text-xl font-semibold shadow-lg"
+            class="level-btn bg-green-500 text-white rounded-lg text-xl font-semibold shadow-lg"
           >
             3 طلاب ومعلم
           </button>
           <button
             id="level-3"
-            class="level-btn bg-green-500 text-white p-6 rounded-lg text-xl font-semibold shadow-lg"
+            class="level-btn bg-green-500 text-white rounded-lg text-xl font-semibold shadow-lg"
           >
             5 طلاب ومعلم
           </button>
           <button
             id="back-to-settings"
-            class="bg-gray-500 hover:bg-gray-600 text-white p-4 rounded-lg text-lg"
+            class="bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-lg"
           >
             رجوع
           </button>
@@ -316,31 +593,31 @@
 
       <div
         id="rooms-interface"
-        class="bg-gray-800 bg-opacity-70 text-white p-10 rounded-xl mb-4 pointer-events-auto hidden max-w-lg w-full"
+        class="interface-container bg-gray-800 bg-opacity-70 text-white rounded-xl mb-4 pointer-events-auto hidden"
       >
         <h1 class="text-4xl font-bold mb-6 text-center">اختيار الغرفة</h1>
         <div class="flex flex-col space-y-6">
           <button
             id="room-classroom"
-            class="room-btn bg-blue-500 text-white p-6 rounded-lg text-xl font-semibold shadow-lg"
+            class="room-btn bg-blue-500 text-white rounded-lg text-xl font-semibold shadow-lg"
           >
             غرفة الصف
           </button>
           <button
             id="room-cafeteria"
-            class="room-btn bg-blue-500 text-white p-6 rounded-lg text-xl font-semibold shadow-lg"
+            class="room-btn bg-blue-500 text-white rounded-lg text-xl font-semibold shadow-lg"
           >
             كافيتيريا
           </button>
           <button
             id="room-assembly"
-            class="room-btn bg-blue-500 text-white p-6 rounded-lg text-xl font-semibold shadow-lg"
+            class="room-btn bg-blue-500 text-white rounded-lg text-xl font-semibold shadow-lg"
           >
             طابور صباحي
           </button>
           <button
             id="back-to-levels"
-            class="bg-gray-500 hover:bg-gray-600 text-white p-4 rounded-lg text-lg"
+            class="bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-lg"
           >
             رجوع
           </button>
@@ -349,7 +626,7 @@
 
       <button
         id="exit-room-btn"
-        class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg text-lg pointer-events-auto"
+        class="bg-red-500 hover:bg-red-600 text-white rounded-lg text-lg pointer-events-auto"
         style="display: none"
       >
         خروج
@@ -366,6 +643,8 @@
       let studentName = "";
       let selectedLevel = "";
       let currentRoom = null;
+      let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      let isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
       // Initialize audio context
       function initAudio() {
@@ -521,7 +800,7 @@
         }
       }
 
-      // Initialize Three.js scene
+      // Initialize Three.js scene with mobile optimization
       let scene,
         camera,
         renderer,
@@ -539,7 +818,20 @@
           0.1,
           1000
         );
-        renderer = new THREE.WebGLRenderer({ antialias: true });
+        
+        // Mobile-optimized renderer settings
+        const rendererOptions = { 
+          antialias: !isMobile, // Disable antialiasing on mobile for performance
+          alpha: true,
+          powerPreference: isMobile ? "low-power" : "high-performance"
+        };
+        
+        renderer = new THREE.WebGLRenderer(rendererOptions);
+        
+        // Adjust pixel ratio for mobile
+        const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 2) : window.devicePixelRatio;
+        renderer.setPixelRatio(pixelRatio);
+        
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById("vr-scene").appendChild(renderer.domElement);
 
@@ -552,8 +844,9 @@
         console.error("Error initializing Three.js:", error);
       }
 
+      // Create optimized star field
       starGeometry = new THREE.BufferGeometry();
-      const starCount = 1000;
+      const starCount = isMobile ? 500 : 1000; // Reduce stars on mobile
       const positions = new Float32Array(starCount * 3);
       const colors = new Float32Array(starCount * 3);
       const sizes = new Float32Array(starCount);
@@ -2461,176 +2754,6 @@
 
       if (!exitRoomBtn) console.error("Exit button not found");
 
-      document.getElementById("to-level-btn").addEventListener("click", () => {
-        playSound("click");
-
-        // Validate student name before proceeding
-        if (!validateStudentName()) {
-          return; // Stop if validation fails
-        }
-
-        settingsInterface.classList.add("hidden");
-        levelInterface.classList.remove("hidden");
-        updateStudentInfo(); // Show student info
-        console.log("Navigated to Level Interface");
-      });
-
-      document
-        .getElementById("back-to-settings")
-        .addEventListener("click", () => {
-          playSound("click");
-          levelInterface.classList.add("hidden");
-          settingsInterface.classList.remove("hidden");
-          hideStudentInfo(); // Hide student info when going back
-          selectedLevel = ""; // Reset selected level
-          console.log("Returned to Settings Interface");
-        });
-
-      document
-        .getElementById("back-to-levels")
-        .addEventListener("click", () => {
-          playSound("click");
-
-          // Clear scene and reset
-          clearScene();
-          currentRoom = null;
-
-          // Add stars back
-          scene.add(stars);
-          scene.background = new THREE.Color(0x000000);
-
-          // Reset camera
-          camera.position.set(0, 2, 10);
-          camera.lookAt(0, 1, 0);
-
-          // Update UI
-          roomsInterface.classList.add("hidden");
-          levelInterface.classList.remove("hidden");
-          exitRoomBtn.style.display = "none";
-
-          updateStudentInfo();
-          console.log("Returned to Level Interface");
-        });
-      document.getElementById("level-1").addEventListener("click", () => {
-        playSound("success");
-        selectedLevel = "طالب ومعلم";
-
-        // Update UI
-        levelInterface.classList.add("hidden");
-        roomsInterface.classList.remove("hidden");
-
-        // Ensure stars background
-        scene.add(stars);
-        scene.background = new THREE.Color(0x000000);
-
-        updateStudentInfo();
-        console.log("Selected Level: طالب ومعلم");
-      });
-
-      document.getElementById("level-2").addEventListener("click", () => {
-        playSound("success");
-        selectedLevel = "3 طلاب ومعلم";
-
-        // Update UI
-        levelInterface.classList.add("hidden");
-        roomsInterface.classList.remove("hidden");
-
-        // Ensure stars background
-        scene.add(stars);
-        scene.background = new THREE.Color(0x000000);
-
-        updateStudentInfo();
-        console.log("Selected Level: 3 طلاب ومعلم");
-      });
-
-      document.getElementById("level-3").addEventListener("click", () => {
-        playSound("success");
-        selectedLevel = "5 طلاب ومعلم";
-
-        // Update UI
-        levelInterface.classList.add("hidden");
-        roomsInterface.classList.remove("hidden");
-
-        // Ensure stars background
-        scene.add(stars);
-        scene.background = new THREE.Color(0x000000);
-
-        updateStudentInfo();
-        console.log("Selected Level: 5 طلاب ومعلم");
-      });
-
-      function switchRoom(room) {
-        console.log(`Switching to room: ${room}`);
-        playSound("success");
-
-        // Check if room exists
-        if (!roomObjects[room] || !rooms[room]) {
-          console.error(`Room ${room} not found`);
-          return;
-        }
-
-        // Clear scene and reset
-        clearScene();
-
-        // Add room to scene
-        scene.add(roomObjects[room]);
-        scene.background = new THREE.Color(rooms[room].background);
-
-        // Set camera position for each room
-        if (room === "classroom") {
-          camera.position.set(0, 3, 8);
-          camera.lookAt(0, 1, -2);
-        } else if (room === "cafeteria") {
-          camera.position.set(2, 5, 14);
-          camera.lookAt(0, 2, 0);
-        } else if (room === "assembly") {
-          camera.position.set(8, 6, 12);
-          camera.lookAt(0, 2, -2);
-        }
-
-        // Update UI
-        roomsInterface.classList.add("hidden");
-        exitRoomBtn.style.display = "block";
-        currentRoom = room;
-        updateStudentInfo();
-        console.log(`Successfully switched to ${room}`);
-      }
-
-      document
-        .getElementById("room-classroom")
-        .addEventListener("click", () => switchRoom("classroom"));
-      document
-        .getElementById("room-cafeteria")
-        .addEventListener("click", () => switchRoom("cafeteria"));
-      document
-        .getElementById("room-assembly")
-        .addEventListener("click", () => switchRoom("assembly"));
-
-      exitRoomBtn.addEventListener("click", () => {
-        console.log(`Exiting room: ${currentRoom}`);
-        playSound("click");
-
-        if (currentRoom) {
-          // Clear scene and reset
-          clearScene();
-          currentRoom = null;
-
-          // Add stars back
-          scene.add(stars);
-          scene.background = new THREE.Color(0x000000);
-
-          // Reset camera
-          camera.position.set(0, 2, 10);
-          camera.lookAt(0, 1, 0);
-
-          // Update UI
-          roomsInterface.classList.remove("hidden");
-          exitRoomBtn.style.display = "none";
-          updateStudentInfo();
-          console.log("Returned to Rooms Interface");
-        }
-      });
-
       function clearScene() {
         // Simple scene clearing - remove all mesh objects except lights
         const toRemove = [];
@@ -2790,32 +2913,205 @@
       });
 
       // Initialize audio when user first interacts
-      document.addEventListener(
-        "click",
-        function initAudioOnInteraction() {
-          initAudio();
-          document.removeEventListener("click", initAudioOnInteraction);
-        },
-        { once: true }
-      );
+      const initAudioEvents = isTouch ? ['touchstart', 'touchend'] : ['click'];
+      
+      function initAudioOnInteraction() {
+        initAudio();
+        initAudioEvents.forEach(event => {
+          document.removeEventListener(event, initAudioOnInteraction);
+        });
+      }
+      
+      initAudioEvents.forEach(event => {
+        document.addEventListener(event, initAudioOnInteraction, { once: true });
+      });
+
+      // Add touch event handlers for better mobile experience
+      function addTouchSupport(element, callback) {
+        if (isTouch) {
+          element.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            element.classList.add('loading');
+          });
+          
+          element.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            element.classList.remove('loading');
+            callback();
+          });
+          
+          element.addEventListener('touchcancel', (e) => {
+            e.preventDefault();
+            element.classList.remove('loading');
+          });
+        } else {
+          element.addEventListener('click', callback);
+        }
+      }
+
+      // Enhanced button interaction setup
+      function setupButtonInteractions() {
+        // Settings to Level button
+        addTouchSupport(document.getElementById("to-level-btn"), () => {
+          playSound("click");
+          if (!validateStudentName()) return;
+          
+          settingsInterface.classList.add("hidden");
+          levelInterface.classList.remove("hidden");
+          updateStudentInfo();
+          console.log("Navigated to Level Interface");
+        });
+
+        // Back to settings button
+        addTouchSupport(document.getElementById("back-to-settings"), () => {
+          playSound("click");
+          levelInterface.classList.add("hidden");
+          settingsInterface.classList.remove("hidden");
+          hideStudentInfo();
+          selectedLevel = "";
+          console.log("Returned to Settings Interface");
+        });
+
+        // Back to levels button  
+        addTouchSupport(document.getElementById("back-to-levels"), () => {
+          playSound("click");
+          clearScene();
+          currentRoom = null;
+          scene.add(stars);
+          scene.background = new THREE.Color(0x000000);
+          camera.position.set(0, 2, 10);
+          camera.lookAt(0, 1, 0);
+          roomsInterface.classList.add("hidden");
+          levelInterface.classList.remove("hidden");
+          exitRoomBtn.style.display = "none";
+          updateStudentInfo();
+          console.log("Returned to Level Interface");
+        });
+
+        // Level selection buttons
+        addTouchSupport(document.getElementById("level-1"), () => {
+          playSound("success");
+          selectedLevel = "طالب ومعلم";
+          levelInterface.classList.add("hidden");
+          roomsInterface.classList.remove("hidden");
+          scene.add(stars);
+          scene.background = new THREE.Color(0x000000);
+          updateStudentInfo();
+          console.log("Selected Level: طالب ومعلم");
+        });
+
+        addTouchSupport(document.getElementById("level-2"), () => {
+          playSound("success");
+          selectedLevel = "3 طلاب ومعلم";
+          levelInterface.classList.add("hidden");
+          roomsInterface.classList.remove("hidden");
+          scene.add(stars);
+          scene.background = new THREE.Color(0x000000);
+          updateStudentInfo();
+          console.log("Selected Level: 3 طلاب ومعلم");
+        });
+
+        addTouchSupport(document.getElementById("level-3"), () => {
+          playSound("success");
+          selectedLevel = "5 طلاب ومعلم";
+          levelInterface.classList.add("hidden");
+          roomsInterface.classList.remove("hidden");
+          scene.add(stars);
+          scene.background = new THREE.Color(0x000000);
+          updateStudentInfo();
+          console.log("Selected Level: 5 طلاب ومعلم");
+        });
+
+        // Room selection buttons
+        addTouchSupport(document.getElementById("room-classroom"), () => switchRoom("classroom"));
+        addTouchSupport(document.getElementById("room-cafeteria"), () => switchRoom("cafeteria"));
+        addTouchSupport(document.getElementById("room-assembly"), () => switchRoom("assembly"));
+
+        // Exit room button
+        addTouchSupport(exitRoomBtn, () => {
+          console.log(`Exiting room: ${currentRoom}`);
+          playSound("click");
+          
+          if (currentRoom) {
+            clearScene();
+            currentRoom = null;
+            scene.add(stars);
+            scene.background = new THREE.Color(0x000000);
+            camera.position.set(0, 2, 10);
+            camera.lookAt(0, 1, 0);
+            roomsInterface.classList.remove("hidden");
+            exitRoomBtn.style.display = "none";
+            updateStudentInfo();
+            console.log("Returned to Rooms Interface");
+          }
+        });
+      }
+
+      // Room switching function
+      function switchRoom(room) {
+        console.log(`Switching to room: ${room}`);
+        playSound("success");
+
+        // Check if room exists
+        if (!roomObjects[room] || !rooms[room]) {
+          console.error(`Room ${room} not found`);
+          return;
+        }
+
+        // Clear scene and reset
+        clearScene();
+
+        // Add room to scene
+        scene.add(roomObjects[room]);
+        scene.background = new THREE.Color(rooms[room].background);
+
+        // Set camera position for each room with mobile-friendly positioning
+        if (room === "classroom") {
+          camera.position.set(0, 3, isMobile ? 10 : 8);
+          camera.lookAt(0, 1, -2);
+        } else if (room === "cafeteria") {
+          camera.position.set(2, 5, isMobile ? 16 : 14);
+          camera.lookAt(0, 2, 0);
+        } else if (room === "assembly") {
+          camera.position.set(8, 6, isMobile ? 14 : 12);
+          camera.lookAt(0, 2, -2);
+        }
+
+        // Update UI
+        roomsInterface.classList.add("hidden");
+        exitRoomBtn.style.display = "block";
+        currentRoom = room;
+        updateStudentInfo();
+        console.log(`Successfully switched to ${room}`);
+      }
+
+      // Remove old event listeners and setup new ones
+      setupButtonInteractions();
 
       function animate() {
         try {
           requestAnimationFrame(animate);
+          
+          // Reduce animation complexity on mobile devices
+          const animationScale = isMobile ? 0.5 : 1.0;
+          const timeScale = isMobile ? 0.001 : 0.002;
+          
           if (!currentRoom) {
             if (starGeometry && starGeometry.attributes.size) {
               const sizes = starGeometry.attributes.size.array;
+              const starCount = sizes.length;
               for (let i = 0; i < starCount; i++) {
-                sizes[i] = Math.sin(Date.now() * 0.001 + i) * 0.5 + 1.5;
+                sizes[i] = Math.sin(Date.now() * timeScale + i) * 0.5 + 1.5;
               }
               starGeometry.attributes.size.needsUpdate = true;
             }
             if (stars) {
-              stars.rotation.y += 0.001;
+              stars.rotation.y += 0.001 * animationScale;
             }
           } else {
+            // Reduced animation complexity for mobile
             if (currentRoom === "classroom" && roomObjects.classroom) {
-              // تحريك المعلم بشكل طبيعي
+              // Simplified teacher movement for mobile
               const teacherBody = roomObjects.classroom.children.find(
                 (child) =>
                   child.geometry &&
@@ -2827,318 +3123,75 @@
                   child.geometry && child.geometry.type === "SphereGeometry"
               );
 
-              if (teacherBody) {
+              if (teacherBody && !isMobile) {
                 teacherBody.position.y =
-                  0.9 + Math.sin(Date.now() * 0.002) * 0.04;
-                teacherBody.rotation.y = Math.sin(Date.now() * 0.001) * 0.15;
+                  0.9 + Math.sin(Date.now() * timeScale) * 0.04 * animationScale;
+                teacherBody.rotation.y = Math.sin(Date.now() * 0.001) * 0.15 * animationScale;
               }
-              if (teacherHead) {
+              if (teacherHead && !isMobile) {
                 teacherHead.position.y =
-                  1.8 + Math.sin(Date.now() * 0.002) * 0.04;
-                teacherHead.rotation.y = Math.sin(Date.now() * 0.0015) * 0.2;
+                  1.8 + Math.sin(Date.now() * timeScale) * 0.04 * animationScale;
+                teacherHead.rotation.y = Math.sin(Date.now() * 0.0015) * 0.2 * animationScale;
               }
 
-              // تحريك الساعة
-              const clock = roomObjects.classroom.children.find(
-                (child) =>
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.position.y > 3
-              );
-              if (clock) {
-                clock.rotation.z += 0.01; // دوران الساعة
-              }
-
-              // تحريك بعض الكراسي قليلاً (كأن الطلاب يتحركون)
-              roomObjects.classroom.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "BoxGeometry" &&
-                  child.position.y < 0.3 &&
-                  index % 9 === 0
-                ) {
-                  child.rotation.y =
-                    Math.sin(Date.now() * 0.0008 + index) * 0.06;
+              // Clock animation - reduced on mobile
+              if (!isMobile) {
+                const clock = roomObjects.classroom.children.find(
+                  (child) =>
+                    child.geometry &&
+                    child.geometry.type === "CylinderGeometry" &&
+                    child.position.y > 3
+                );
+                if (clock) {
+                  clock.rotation.z += 0.01 * animationScale;
                 }
-              });
+              }
+
+              // Chair movement - only on desktop
+              if (!isMobile) {
+                roomObjects.classroom.children.forEach((child, index) => {
+                  if (
+                    child.geometry &&
+                    child.geometry.type === "BoxGeometry" &&
+                    child.position.y < 0.3 &&
+                    index % 9 === 0
+                  ) {
+                    child.rotation.y =
+                      Math.sin(Date.now() * 0.0008 + index) * 0.06 * animationScale;
+                  }
+                });
+              }
             }
-            if (currentRoom === "cafeteria" && roomObjects.cafeteria) {
-              // تحريك العمال وموظفي الكافيتيريا
+            
+            // Similar optimizations for cafeteria and assembly - simplified for mobile
+            if (currentRoom === "cafeteria" && roomObjects.cafeteria && !isMobile) {
+              // Only animate on desktop for performance
               roomObjects.cafeteria.children.forEach((child, index) => {
                 if (
                   child.geometry &&
                   child.geometry.type === "CylinderGeometry" &&
-                  child.material.color.getHex() === 0xf0f8ff && // العمال
+                  child.material.color.getHex() === 0xf0f8ff &&
                   child.position.y > 0.8 &&
                   child.position.y < 1.2
                 ) {
                   child.position.y =
-                    0.9 + Math.sin(Date.now() * 0.0015 + index) * 0.03;
+                    0.9 + Math.sin(Date.now() * 0.0015 + index) * 0.03 * animationScale;
                   child.rotation.y =
-                    Math.sin(Date.now() * 0.0008 + index) * 0.08;
-                }
-              });
-
-              // تحريك ساعة الكافيتيريا - العقارب
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "BoxGeometry" &&
-                  child.material.color.getHex() === 0x000000 &&
-                  child.position.y > 4
-                ) {
-                  if (child.geometry.parameters.width < 0.02) {
-                    // عقرب الدقائق
-                    child.rotation.z += 0.01;
-                  } else {
-                    // عقرب الساعات
-                    child.rotation.z += 0.001;
-                  }
-                }
-              });
-
-              // تحريك النباتات بلطف - تأثير تنفس
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "SphereGeometry" &&
-                  (child.material.color.getHex() === 0x228b22 ||
-                    child.material.color.getHex() === 0x90ee90)
-                ) {
-                  const scaleVariation =
-                    1 + Math.sin(Date.now() * 0.0012 + index) * 0.02;
-                  child.scale.x = scaleVariation;
-                  child.scale.y = scaleVariation;
-                  child.scale.z = scaleVariation;
-
-                  // حركة خفيفة للأوراق
-                  child.rotation.y +=
-                    Math.sin(Date.now() * 0.001 + index) * 0.001;
-                }
-              });
-
-              // تحريك بعض المشروبات والأكواب
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.material.color.getHex() === 0x4169e1 && // الأكواب الزرقاء
-                  index % 7 === 0 &&
-                  child.position.y > 0.4
-                ) {
-                  child.rotation.y += 0.008;
-                  child.position.y +=
-                    Math.sin(Date.now() * 0.003 + index) * 0.001;
-                }
-              });
-
-              // تحريك موزعات المشروبات
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.material.transparent &&
-                  child.position.x < -8 &&
-                  child.position.y > 1.4
-                ) {
-                  // تأثير فقاعات في المشروبات
-                  const bubbleEffect =
-                    0.7 + Math.sin(Date.now() * 0.004 + index) * 0.05;
-                  child.material.opacity = bubbleEffect;
-                }
-              });
-
-              // تحريك الستائر بلطف
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "PlaneGeometry" &&
-                  child.material.color.getHex() === 0xf0e68c && // الستائر
-                  child.material.transparent
-                ) {
-                  child.rotation.z =
-                    Math.sin(Date.now() * 0.0005 + index) * 0.02;
-                }
-              });
-
-              // تحريك شاشات الأجهزة - وميض خفيف
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  (child.material.emissive.getHex() === 0x003300 ||
-                    child.material.emissive.getHex() === 0x001100)
-                ) {
-                  const intensity =
-                    0.01 + Math.sin(Date.now() * 0.002 + index) * 0.005;
-                  child.material.emissive.setRGB(0, intensity, 0);
-                }
-              });
-
-              // تحريك القهوة في آلة القهوة
-              roomObjects.cafeteria.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.material.color.getHex() === 0x8b4513 && // القهوة
-                  child.material.transparent
-                ) {
-                  child.rotation.y += 0.005;
-                  const opacity = 0.7 + Math.sin(Date.now() * 0.003) * 0.1;
-                  child.material.opacity = opacity;
+                    Math.sin(Date.now() * 0.0008 + index) * 0.08 * animationScale;
                 }
               });
             }
-            if (currentRoom === "assembly" && roomObjects.assembly) {
-              // تحريك العلم بشكل واقعي
+
+            if (currentRoom === "assembly" && roomObjects.assembly && !isMobile) {
+              // Flag animation - desktop only
               roomObjects.assembly.children.forEach((child, index) => {
                 if (
                   child.geometry &&
                   child.geometry.type === "PlaneGeometry" &&
-                  child.material.color.getHex() === 0xdc143c // العلم الأحمر
+                  child.material.color.getHex() === 0xdc143c
                 ) {
-                  child.rotation.y = Math.sin(Date.now() * 0.002) * 0.15;
-                  child.position.x = -4.1 + Math.sin(Date.now() * 0.002) * 0.05;
-                }
-              });
-
-              // تحريك المدير أثناء الكلام
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.material.color.getHex() === 0x2f4f4f && // بدلة المدير
-                  child.position.y > 1 &&
-                  child.position.x === -1
-                ) {
-                  child.position.y = 1.1 + Math.sin(Date.now() * 0.003) * 0.02;
-                  child.rotation.y = Math.sin(Date.now() * 0.001) * 0.1;
-                }
-              });
-
-              // تحريك رأس المدير أثناء الحديث
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "SphereGeometry" &&
-                  child.position.y > 1.8 &&
-                  child.position.x === -1
-                ) {
-                  child.rotation.y =
-                    Math.sin(Date.now() * 0.004 + index) * 0.08;
-                  child.position.y = 1.9 + Math.sin(Date.now() * 0.003) * 0.02;
-                }
-              });
-
-              // تحريك المعلمين المراقبين
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  (child.material.color.getHex() === 0x4169e1 ||
-                    child.material.color.getHex() === 0x8b4513 ||
-                    child.material.color.getHex() === 0x2e8b57) &&
-                  child.position.y < 1
-                ) {
-                  child.position.y =
-                    0.65 + Math.sin(Date.now() * 0.002 + index) * 0.02;
-                  child.rotation.y =
-                    Math.sin(Date.now() * 0.0008 + index) * 0.06;
-                }
-              });
-
-              // تحريك الطلاب في الطابور - حركة خفيفة ومنتظمة
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.position.y < 0.8 &&
-                  child.position.y > 0.4 // الطلاب
-                ) {
-                  // حركة تنفس خفيفة
-                  child.position.y =
-                    0.55 + Math.sin(Date.now() * 0.001 + index * 0.1) * 0.015;
-
-                  // حركة خفيفة من جانب لآخر
-                  if (index % 15 === 0) {
-                    child.rotation.y =
-                      Math.sin(Date.now() * 0.0005 + index) * 0.03;
-                  }
-                }
-              });
-
-              // تحريك رؤوس الطلاب - التفات خفيف
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "SphereGeometry" &&
-                  child.position.y > 1.2 &&
-                  child.position.y < 1.4 // رؤوس الطلاب
-                ) {
-                  child.position.y =
-                    1.25 + Math.sin(Date.now() * 0.001 + index * 0.1) * 0.015;
-
-                  // التفات نحو المنصة أحياناً
-                  if (index % 20 === 0) {
-                    child.rotation.y =
-                      Math.sin(Date.now() * 0.0008 + index) * 0.05;
-                  }
-                }
-              });
-
-              // تحريك الأشجار (الأوراق)
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "SphereGeometry" &&
-                  child.material.color.getHex() === 0x228b22 && // أوراق الأشجار
-                  child.position.y > 2
-                ) {
-                  const swayIntensity =
-                    1 + Math.sin(Date.now() * 0.0015 + index) * 0.03;
-                  child.scale.x = swayIntensity;
-                  child.scale.z = swayIntensity;
-                  child.rotation.y +=
-                    Math.sin(Date.now() * 0.0008 + index) * 0.001;
-                }
-              });
-
-              // تحريك العجلات (دوران)
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "CylinderGeometry" &&
-                  child.material.color.getHex() === 0x2f2f2f // عجلات الكراسي المتحركة
-                ) {
-                  child.rotation.x += 0.01;
-                }
-              });
-
-              // وميض خفيف للنوافذ (انعكاس الشمس)
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "PlaneGeometry" &&
-                  child.material.color.getHex() === 0x87ceeb && // نوافذ المدرسة
-                  child.material.transparent
-                ) {
-                  const opacity =
-                    0.7 + Math.sin(Date.now() * 0.0005 + index) * 0.1;
-                  child.material.opacity = Math.max(
-                    0.5,
-                    Math.min(0.9, opacity)
-                  );
-                }
-              });
-
-              // تحريك الميكروفون عند الاستخدام
-              roomObjects.assembly.children.forEach((child, index) => {
-                if (
-                  child.geometry &&
-                  child.geometry.type === "SphereGeometry" &&
-                  child.material.color.getHex() === 0x000000 && // الميكروفون
-                  child.position.y > 1.5
-                ) {
-                  child.rotation.x = Math.sin(Date.now() * 0.003) * 0.05;
+                  child.rotation.y = Math.sin(Date.now() * timeScale) * 0.15 * animationScale;
+                  child.position.x = -4.1 + Math.sin(Date.now() * timeScale) * 0.05 * animationScale;
                 }
               });
             }
@@ -3153,9 +3206,36 @@
       window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
+        
+        // Mobile-optimized resize handling
+        const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 2) : window.devicePixelRatio;
+        renderer.setPixelRatio(pixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        console.log("Window resized");
+        
+        // Adjust camera position on orientation change for mobile
+        if (isMobile && currentRoom) {
+          setTimeout(() => {
+            if (currentRoom === "classroom") {
+              camera.position.set(0, 3, window.innerHeight < window.innerWidth ? 12 : 10);
+            } else if (currentRoom === "cafeteria") {
+              camera.position.set(2, 5, window.innerHeight < window.innerWidth ? 18 : 16);
+            } else if (currentRoom === "assembly") {
+              camera.position.set(8, 6, window.innerHeight < window.innerWidth ? 16 : 14);
+            }
+          }, 100);
+        }
+        
+        console.log("Window resized - Mobile:", isMobile, "Size:", window.innerWidth + "x" + window.innerHeight);
       });
+
+      // Handle orientation change on mobile
+      if (isMobile) {
+        window.addEventListener("orientationchange", () => {
+          setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+          }, 500);
+        });
+      }
     </script>
   </body>
 </html>
