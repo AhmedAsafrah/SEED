@@ -2,7 +2,10 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>بيئة دعم افتراضية للأطفال المصابين بالتوحد</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,7 +49,8 @@
       }
 
       /* Enhanced Button Styles */
-      .level-btn, .room-btn {
+      .level-btn,
+      .room-btn {
         transition: transform 0.3s ease, background-color 0.3s ease;
         border: 2px solid white;
         padding: clamp(1rem, 3vw, 1.5rem);
@@ -60,15 +64,16 @@
         justify-content: center;
         text-align: center;
       }
-      
-      .level-btn:hover, .room-btn:hover {
+
+      .level-btn:hover,
+      .room-btn:hover {
         transform: scale(1.05);
       }
-      
+
       .level-btn:hover {
         background-color: #34d399;
       }
-      
+
       .room-btn:hover {
         background-color: #60a5fa;
       }
@@ -85,7 +90,7 @@
       .level-btn:hover::after {
         opacity: 1;
       }
-      
+
       .room-btn::after {
         content: "🌟";
         position: absolute;
@@ -243,14 +248,15 @@
           max-width: 95vw;
           max-height: 90vh;
         }
-        
-        .level-btn, .room-btn {
+
+        .level-btn,
+        .room-btn {
           padding: 1.2rem 0.8rem;
           margin: 0.5rem 0;
           font-size: 1.1rem;
           min-height: 65px;
         }
-        
+
         #exit-room-btn {
           bottom: 10px;
           left: 10px;
@@ -258,40 +264,41 @@
           font-size: 1rem;
           min-width: 90px;
         }
-        
+
         input[type="text"] {
           padding: 1rem;
           font-size: 1.1rem;
         }
-        
+
         h1 {
           font-size: 1.8rem !important;
           margin-bottom: 1rem;
         }
-        
+
         button {
           padding: 1rem;
           font-size: 1.1rem;
           min-height: 50px;
         }
-        
-        .volume-indicator, .brightness-indicator {
+
+        .volume-indicator,
+        .brightness-indicator {
           font-size: 0.9rem;
           padding: 10px;
           top: 10px;
           right: 10px;
         }
-        
+
         .brightness-indicator {
           top: 55px;
         }
-        
+
         .student-info {
           font-size: 1rem;
           padding: 10px;
           max-width: 180px;
         }
-        
+
         .level-info {
           font-size: 0.9rem;
           padding: 8px;
@@ -306,22 +313,23 @@
           padding: 1.5rem;
           max-width: 90vw;
         }
-        
-        .level-btn, .room-btn {
+
+        .level-btn,
+        .room-btn {
           padding: 1.4rem;
           font-size: 1.2rem;
           min-height: 70px;
         }
-        
+
         h1 {
           font-size: 2.2rem !important;
         }
-        
+
         input[type="text"] {
           padding: 1.2rem;
           font-size: 1.2rem;
         }
-        
+
         button {
           padding: 1.2rem;
           font-size: 1.2rem;
@@ -334,13 +342,14 @@
           padding: 2rem;
           max-width: 85vw;
         }
-        
-        .level-btn, .room-btn {
+
+        .level-btn,
+        .room-btn {
           padding: 1.5rem;
           font-size: 1.3rem;
           min-height: 75px;
         }
-        
+
         h1 {
           font-size: 2.5rem !important;
         }
@@ -352,13 +361,14 @@
           padding: 2.5rem;
           max-width: 80vw;
         }
-        
-        .level-btn, .room-btn {
+
+        .level-btn,
+        .room-btn {
           padding: 1.5rem;
           font-size: 1.25rem;
           min-height: 80px;
         }
-        
+
         h1 {
           font-size: 3rem !important;
         }
@@ -366,16 +376,18 @@
 
       /* Touch-friendly interactions */
       @media (pointer: coarse) {
-        button, .level-btn, .room-btn {
+        button,
+        .level-btn,
+        .room-btn {
           min-height: 48px;
           min-width: 48px;
         }
-        
+
         input[type="range"]::-webkit-slider-thumb {
           height: 32px;
           width: 32px;
         }
-        
+
         input[type="range"]::-moz-range-thumb {
           height: 32px;
           width: 32px;
@@ -389,18 +401,19 @@
           overflow-y: auto;
           padding: 1rem;
         }
-        
+
         h1 {
           font-size: 1.5rem !important;
           margin-bottom: 0.5rem;
         }
-        
-        .level-btn, .room-btn {
+
+        .level-btn,
+        .room-btn {
           padding: 0.8rem;
           margin: 0.3rem 0;
           min-height: 50px;
         }
-        
+
         #exit-room-btn {
           bottom: 5px;
           left: 5px;
@@ -413,22 +426,26 @@
         input[type="range"]::-webkit-slider-thumb {
           border: 1px solid rgba(4, 170, 109, 0.3);
         }
-        
-        button, .level-btn, .room-btn {
+
+        button,
+        .level-btn,
+        .room-btn {
           border-width: 1px;
         }
       }
 
       /* Accessibility improvements */
       @media (prefers-reduced-motion: reduce) {
-        .level-btn, .room-btn {
+        .level-btn,
+        .room-btn {
           transition: none;
         }
-        
-        .level-btn:hover, .room-btn:hover {
+
+        .level-btn:hover,
+        .room-btn:hover {
           transform: none;
         }
-        
+
         input[type="range"]::-webkit-slider-thumb:hover,
         input[type="range"]::-moz-range-thumb:hover {
           transform: none;
@@ -436,7 +453,9 @@
       }
 
       /* Focus styles for keyboard navigation */
-      button:focus, .level-btn:focus, .room-btn:focus {
+      button:focus,
+      .level-btn:focus,
+      .room-btn:focus {
         outline: 3px solid #4f46e5;
         outline-offset: 2px;
       }
@@ -643,8 +662,11 @@
       let studentName = "";
       let selectedLevel = "";
       let currentRoom = null;
-      let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      let isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      let isMobile =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+      let isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
       // Initialize audio context
       function initAudio() {
@@ -818,20 +840,22 @@
           0.1,
           1000
         );
-        
+
         // Mobile-optimized renderer settings
-        const rendererOptions = { 
+        const rendererOptions = {
           antialias: !isMobile, // Disable antialiasing on mobile for performance
           alpha: true,
-          powerPreference: isMobile ? "low-power" : "high-performance"
+          powerPreference: isMobile ? "low-power" : "high-performance",
         };
-        
+
         renderer = new THREE.WebGLRenderer(rendererOptions);
-        
+
         // Adjust pixel ratio for mobile
-        const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 2) : window.devicePixelRatio;
+        const pixelRatio = isMobile
+          ? Math.min(window.devicePixelRatio, 2)
+          : window.devicePixelRatio;
         renderer.setPixelRatio(pixelRatio);
-        
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById("vr-scene").appendChild(renderer.domElement);
 
@@ -2913,39 +2937,41 @@
       });
 
       // Initialize audio when user first interacts
-      const initAudioEvents = isTouch ? ['touchstart', 'touchend'] : ['click'];
-      
+      const initAudioEvents = isTouch ? ["touchstart", "touchend"] : ["click"];
+
       function initAudioOnInteraction() {
         initAudio();
-        initAudioEvents.forEach(event => {
+        initAudioEvents.forEach((event) => {
           document.removeEventListener(event, initAudioOnInteraction);
         });
       }
-      
-      initAudioEvents.forEach(event => {
-        document.addEventListener(event, initAudioOnInteraction, { once: true });
+
+      initAudioEvents.forEach((event) => {
+        document.addEventListener(event, initAudioOnInteraction, {
+          once: true,
+        });
       });
 
       // Add touch event handlers for better mobile experience
       function addTouchSupport(element, callback) {
         if (isTouch) {
-          element.addEventListener('touchstart', (e) => {
+          element.addEventListener("touchstart", (e) => {
             e.preventDefault();
-            element.classList.add('loading');
+            element.classList.add("loading");
           });
-          
-          element.addEventListener('touchend', (e) => {
+
+          element.addEventListener("touchend", (e) => {
             e.preventDefault();
-            element.classList.remove('loading');
+            element.classList.remove("loading");
             callback();
           });
-          
-          element.addEventListener('touchcancel', (e) => {
+
+          element.addEventListener("touchcancel", (e) => {
             e.preventDefault();
-            element.classList.remove('loading');
+            element.classList.remove("loading");
           });
         } else {
-          element.addEventListener('click', callback);
+          element.addEventListener("click", callback);
         }
       }
 
@@ -2955,7 +2981,7 @@
         addTouchSupport(document.getElementById("to-level-btn"), () => {
           playSound("click");
           if (!validateStudentName()) return;
-          
+
           settingsInterface.classList.add("hidden");
           levelInterface.classList.remove("hidden");
           updateStudentInfo();
@@ -2972,7 +2998,7 @@
           console.log("Returned to Settings Interface");
         });
 
-        // Back to levels button  
+        // Back to levels button
         addTouchSupport(document.getElementById("back-to-levels"), () => {
           playSound("click");
           clearScene();
@@ -3023,15 +3049,21 @@
         });
 
         // Room selection buttons
-        addTouchSupport(document.getElementById("room-classroom"), () => switchRoom("classroom"));
-        addTouchSupport(document.getElementById("room-cafeteria"), () => switchRoom("cafeteria"));
-        addTouchSupport(document.getElementById("room-assembly"), () => switchRoom("assembly"));
+        addTouchSupport(document.getElementById("room-classroom"), () =>
+          switchRoom("classroom")
+        );
+        addTouchSupport(document.getElementById("room-cafeteria"), () =>
+          switchRoom("cafeteria")
+        );
+        addTouchSupport(document.getElementById("room-assembly"), () =>
+          switchRoom("assembly")
+        );
 
         // Exit room button
         addTouchSupport(exitRoomBtn, () => {
           console.log(`Exiting room: ${currentRoom}`);
           playSound("click");
-          
+
           if (currentRoom) {
             clearScene();
             currentRoom = null;
@@ -3091,11 +3123,11 @@
       function animate() {
         try {
           requestAnimationFrame(animate);
-          
+
           // Reduce animation complexity on mobile devices
           const animationScale = isMobile ? 0.5 : 1.0;
           const timeScale = isMobile ? 0.001 : 0.002;
-          
+
           if (!currentRoom) {
             if (starGeometry && starGeometry.attributes.size) {
               const sizes = starGeometry.attributes.size.array;
@@ -3125,13 +3157,17 @@
 
               if (teacherBody && !isMobile) {
                 teacherBody.position.y =
-                  0.9 + Math.sin(Date.now() * timeScale) * 0.04 * animationScale;
-                teacherBody.rotation.y = Math.sin(Date.now() * 0.001) * 0.15 * animationScale;
+                  0.9 +
+                  Math.sin(Date.now() * timeScale) * 0.04 * animationScale;
+                teacherBody.rotation.y =
+                  Math.sin(Date.now() * 0.001) * 0.15 * animationScale;
               }
               if (teacherHead && !isMobile) {
                 teacherHead.position.y =
-                  1.8 + Math.sin(Date.now() * timeScale) * 0.04 * animationScale;
-                teacherHead.rotation.y = Math.sin(Date.now() * 0.0015) * 0.2 * animationScale;
+                  1.8 +
+                  Math.sin(Date.now() * timeScale) * 0.04 * animationScale;
+                teacherHead.rotation.y =
+                  Math.sin(Date.now() * 0.0015) * 0.2 * animationScale;
               }
 
               // Clock animation - reduced on mobile
@@ -3157,14 +3193,20 @@
                     index % 9 === 0
                   ) {
                     child.rotation.y =
-                      Math.sin(Date.now() * 0.0008 + index) * 0.06 * animationScale;
+                      Math.sin(Date.now() * 0.0008 + index) *
+                      0.06 *
+                      animationScale;
                   }
                 });
               }
             }
-            
+
             // Similar optimizations for cafeteria and assembly - simplified for mobile
-            if (currentRoom === "cafeteria" && roomObjects.cafeteria && !isMobile) {
+            if (
+              currentRoom === "cafeteria" &&
+              roomObjects.cafeteria &&
+              !isMobile
+            ) {
               // Only animate on desktop for performance
               roomObjects.cafeteria.children.forEach((child, index) => {
                 if (
@@ -3175,14 +3217,23 @@
                   child.position.y < 1.2
                 ) {
                   child.position.y =
-                    0.9 + Math.sin(Date.now() * 0.0015 + index) * 0.03 * animationScale;
+                    0.9 +
+                    Math.sin(Date.now() * 0.0015 + index) *
+                      0.03 *
+                      animationScale;
                   child.rotation.y =
-                    Math.sin(Date.now() * 0.0008 + index) * 0.08 * animationScale;
+                    Math.sin(Date.now() * 0.0008 + index) *
+                    0.08 *
+                    animationScale;
                 }
               });
             }
 
-            if (currentRoom === "assembly" && roomObjects.assembly && !isMobile) {
+            if (
+              currentRoom === "assembly" &&
+              roomObjects.assembly &&
+              !isMobile
+            ) {
               // Flag animation - desktop only
               roomObjects.assembly.children.forEach((child, index) => {
                 if (
@@ -3190,8 +3241,11 @@
                   child.geometry.type === "PlaneGeometry" &&
                   child.material.color.getHex() === 0xdc143c
                 ) {
-                  child.rotation.y = Math.sin(Date.now() * timeScale) * 0.15 * animationScale;
-                  child.position.x = -4.1 + Math.sin(Date.now() * timeScale) * 0.05 * animationScale;
+                  child.rotation.y =
+                    Math.sin(Date.now() * timeScale) * 0.15 * animationScale;
+                  child.position.x =
+                    -4.1 +
+                    Math.sin(Date.now() * timeScale) * 0.05 * animationScale;
                 }
               });
             }
@@ -3206,33 +3260,52 @@
       window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        
+
         // Mobile-optimized resize handling
-        const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 2) : window.devicePixelRatio;
+        const pixelRatio = isMobile
+          ? Math.min(window.devicePixelRatio, 2)
+          : window.devicePixelRatio;
         renderer.setPixelRatio(pixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        
+
         // Adjust camera position on orientation change for mobile
         if (isMobile && currentRoom) {
           setTimeout(() => {
             if (currentRoom === "classroom") {
-              camera.position.set(0, 3, window.innerHeight < window.innerWidth ? 12 : 10);
+              camera.position.set(
+                0,
+                3,
+                window.innerHeight < window.innerWidth ? 12 : 10
+              );
             } else if (currentRoom === "cafeteria") {
-              camera.position.set(2, 5, window.innerHeight < window.innerWidth ? 18 : 16);
+              camera.position.set(
+                2,
+                5,
+                window.innerHeight < window.innerWidth ? 18 : 16
+              );
             } else if (currentRoom === "assembly") {
-              camera.position.set(8, 6, window.innerHeight < window.innerWidth ? 16 : 14);
+              camera.position.set(
+                8,
+                6,
+                window.innerHeight < window.innerWidth ? 16 : 14
+              );
             }
           }, 100);
         }
-        
-        console.log("Window resized - Mobile:", isMobile, "Size:", window.innerWidth + "x" + window.innerHeight);
+
+        console.log(
+          "Window resized - Mobile:",
+          isMobile,
+          "Size:",
+          window.innerWidth + "x" + window.innerHeight
+        );
       });
 
       // Handle orientation change on mobile
       if (isMobile) {
         window.addEventListener("orientationchange", () => {
           setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
+            window.dispatchEvent(new Event("resize"));
           }, 500);
         });
       }
